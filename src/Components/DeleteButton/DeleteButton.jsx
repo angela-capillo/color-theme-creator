@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./DeleteButton.css";
 
 export default function DeleteButtonGroup({ colorId, onDelete }) { 
     const [showConfirmationMessage, setShowConfirmationMessage] = useState(false);
@@ -14,14 +15,14 @@ export default function DeleteButtonGroup({ colorId, onDelete }) {
     }
     
     return (
-        <div>
+        <div className="delete-button-group">
       {!showConfirmationMessage ? (
         // here the default button
         <button onClick={() => setShowConfirmationMessage(true)}>Delete</button>
       ) : (
         // here the confirmation version
         <div>
-          <p>Really delete?</p>
+          <p className="color-card-highlight">Really delete?</p>
           <button onClick={handleDelete}>Delete</button>
           <button onClick={handleCancel}>Cancel</button>
         </div>
