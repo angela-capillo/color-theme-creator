@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState } from "react";
+import "./ColorInput.css";
 
 
 export default function ColorInput({name, defaultValue}) {
@@ -11,11 +12,11 @@ export default function ColorInput({name, defaultValue}) {
     }
 
     return (
-        <>
+        <div className="color-input">
         <input type="text" id={name} name={name} value={inputValue} onChange={handleInputValue}>
         </input>
         <input type="color" value={inputValue} onChange={handleInputValue}>
         </input>
-        </>
+        </div>
     );
 }

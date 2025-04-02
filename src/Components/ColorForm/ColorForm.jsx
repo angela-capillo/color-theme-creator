@@ -1,4 +1,5 @@
 import ColorInput from "../ColorInput/ColorInput";
+import "./ColorForm.css";
 
 export default function ColorForm({ onAddEntry }) {
     
@@ -19,7 +20,7 @@ export default function ColorForm({ onAddEntry }) {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="color-form" onSubmit={handleSubmit}>
         <label htmlFor="role">Role</label>
         <input type="text" id="role" name="role" defaultValue={defaultValues.role} />
         <label htmlFor="hex">Hex</label>
