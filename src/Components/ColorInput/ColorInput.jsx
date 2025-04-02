@@ -6,17 +6,16 @@ export default function ColorInput({name, defaultValues}) {
 
     console.log(defaultValues.hex);
 
-    // function handleInputValue() {
-    //     setinputValue
-    // }
-
+    function handleInputValue(event) {
+        setInputValue(event.target.value);
+    }
 
     return (
         <>
-        <input type="text" id={name} name={name} value={inputValue} >
+        <input type="text" id={name} name={name} value={inputValue} onChange={handleInputValue}>
         </input>
-        <input type="color" value={inputValue} >
+        <input type="color" value={inputValue} onChange={handleInputValue}>
         </input>
         </>
-    )
+    );
 }
