@@ -1,7 +1,7 @@
 import ColorInput from "../ColorInput/ColorInput";
 import "./ColorForm.css";
 
-export default function ColorForm({ onAddEntry }) {
+export default function ColorForm({ onAddColor }) {
     
     const defaultValues = {role: "Primary color", hex: "#663399", contrastText: "#F0E8F7"};
 
@@ -12,7 +12,7 @@ export default function ColorForm({ onAddEntry }) {
 
         console.log(data)
     
-        onAddEntry({role: data.role, hex: data.hex, contrastText:data.contrastText})
+        onAddColor({role: data.role, hex: data.hex, contrastText:data.contrastText})
     
         event.target.reset();
         event.target.elements.role.focus();
