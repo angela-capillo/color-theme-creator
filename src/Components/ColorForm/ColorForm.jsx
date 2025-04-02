@@ -11,7 +11,7 @@ export default function ColorForm({ onAddEntry }) {
 
         console.log(data)
     
-        //onAddEntry({role: data.role,})
+        onAddEntry({role: data.role, hex: data.hex, contrastText:data.contrastText})
     
         event.target.reset();
         event.target.elements.role.focus();
