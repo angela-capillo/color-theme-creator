@@ -8,20 +8,23 @@ import { uid } from "uid";
 
 function App() {
 
-  const [colors, setColor] = useState(initialColors);
+  const [colors, setColors] = useState(initialColors);
 
   function handleAddColor(newColor) {
     newColor.id = uid();
-    setColor([newColor, ...colors]);
+    setColors([newColor, ...colors]);
+  }
 
+  function handleDeleteColor(colorId) {
+    setColors(colors.filter((color) => color.id !== colorId));
   }
 
   return (
     <>
       <h1>Theme Creator</h1>
-      <ColorForm onAddColor={handleAddColor}/>
+      <ColorForm onAddColor={handleAddColor} />
       {colors.map((color) => {
-        return <Color key={color.id} color={color} />;
+        return <Color key={color.id} color={color} onDelete={handleDeleteColor}/>;
       })}
     </>
   );
