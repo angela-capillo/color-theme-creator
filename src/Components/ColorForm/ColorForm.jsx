@@ -54,7 +54,7 @@ export default function ColorForm({ onAddColor, mode, color, onEditColor }) {
         }
       ></ColorInput>
       <button type="submit">
-        {mode === "edit" ? "Edit color" : "Add color"}
+        {mode === "edit" ? "Update color" : "Add color"}
       </button>
     </form>
   );

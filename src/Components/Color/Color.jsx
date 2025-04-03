@@ -27,8 +27,8 @@ export default function Color({ color, onDelete, onEditColor }) {
       <h3 className="color-card-headline">{color.hex}</h3>
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
-      <DeleteButtonGroup colorId={color.id} onDelete={onDelete} /> {/* pass isEditMode here to manage the conditional rendering of the button group*/}
-      <button onClick={toggleEditMode}>Edit</button>
+      <DeleteButtonGroup colorId={color.id} onDelete={onDelete} onEditMode={isEditMode} onTogglingEditMode={toggleEditMode}/> {/* pass isEditMode here to manage the conditional rendering of the button group*/}
+      {/* moving this to button group -_-' <button onClick={toggleEditMode}>Edit</button> */}
     </div>
   );
 }
