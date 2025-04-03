@@ -6,7 +6,9 @@ import { useState } from "react";
 import { uid } from "uid";
 
 function App() {
+  //const [colors, setColors] = useState(initialColors); -> this needs to be a use local storage
   const [colors, setColors] = useState(initialColors);
+
 
   function handleAddColor(newColor) {
     newColor.id = uid();
