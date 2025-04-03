@@ -15,25 +15,31 @@ export default function ContrastChecker({ textColor, bgColor }) {
     console.log(data);
     setContrastResult(data);
   }
-
-  // Use useEffect to call fetchContrast when colors change
   useEffect(() => {
     fetchContrast();
   }, [textColor, bgColor]);
 
-  let message = ""; 
+  let message = "";
+  let messageTextColor = "";
+  let messageBgColor = "";
 
   if (contrastResult) {
     const overallScore = contrastResult.overall;
 
     if (overallScore === "Yup") {
       message = "Yup";
+      messageTextColor = "#000000";
+      messageBgColor = "#00d15b";
     } else if (overallScore === "Kinda") {
       message = "Kinda";
+      messageTextColor = "#000000";
+      messageBgColor = "#ffae00";
     } else if (overallScore === "Nope") {
       message = "Nope";
+      messageTextColor = "#ffffff";
+      messageBgColor = "#bb1111";
     }
   }
 
-  return <p>Overall Contrast Score: {message}</p>;
+  return <p className="contrast-checker" style={{color: messageTextColor, backgroundColor: messageBgColor}}>Overall Contrast Score: {message}</p>;
 }
