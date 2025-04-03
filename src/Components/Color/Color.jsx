@@ -2,6 +2,7 @@ import "./Color.css";
 import DeleteButtonGroup from "../DeleteButton/DeleteButton";
 import { useState } from "react";
 import ColorForm from "../ColorForm/ColorForm";
+import CopyToClipboardButton from "../CopyToClipboardButton/CopyToClipboardButton";
 
 export default function Color({ color, onDelete, onEditColor }) {
 
@@ -11,6 +12,7 @@ export default function Color({ color, onDelete, onEditColor }) {
     setIsEditMode(!isEditMode); // this because when using it as a ternary operator, in both cases we set it to false
   }
 
+  console.log(color);
   //console.log(isEditMode)
   //console.log("Find Issue 1");
   return (
@@ -24,7 +26,7 @@ export default function Color({ color, onDelete, onEditColor }) {
       {isEditMode ? (
         <ColorForm mode="edit" color={color} onEditColor={onEditColor}/>
       ) : null}
-      <h3 className="color-card-headline">{color.hex}</h3>
+      <h3 className="color-card-headline">{color.hex}</h3><CopyToClipboardButton text={color.hex}/>
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
       <DeleteButtonGroup colorId={color.id} onDelete={onDelete} onEditMode={isEditMode} onTogglingEditMode={toggleEditMode}/> {/* pass isEditMode here to manage the conditional rendering of the button group*/}
