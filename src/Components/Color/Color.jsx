@@ -12,6 +12,7 @@ export default function Color({ color, onDelete, onEditColor }) {
     setIsEditMode(!isEditMode); // this because when using it as a ternary operator, in both cases we set it to false
   }
 
+  console.log(color);
   //console.log(isEditMode)
   //console.log("Find Issue 1");
   return (

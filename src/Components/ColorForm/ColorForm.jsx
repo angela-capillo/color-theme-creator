@@ -1,5 +1,6 @@
 import ColorInput from "../ColorInput/ColorInput";
 import "./ColorForm.css";
+import { useState } from "react";
 
 export default function ColorForm({ onAddColor, mode, color, onEditColor }) {
   const defaultValues = {
@@ -8,10 +9,44 @@ export default function ColorForm({ onAddColor, mode, color, onEditColor }) {
     contrastText: "#F0E8F7",
   };
 
+  // these are values for the input add form
+
+  const [hexValue, setHexValue] = useState(defaultValues.hex);
+  const [contrastTextValue, setContrastTextValue] = useState(defaultValues.contrastText);
+
+  // console.log(color);
+  // const [hexValueEdit, setHexValueEdit] = useState(color.hex);
+  // const [contrastTextValueEdit, setContrastTextValueEdit] = useState(color.contrastText);
+  // defaultvalue={mode === "edit" ? hexValueEdit : hexValue}
+  // defaultValue={mode === "edit" ? contrastTextValueEdit : contrastTextValue}
+
+
+  function handleHexValue(event) {
+    //console.log("bla")
+    setHexValue(event.target.value);
+  }
+
+  function handleContrastTextValue(event) {
+    setContrastTextValue(event.target.value);
+  }
+
+  // function handleHexValueEdit(event) {
+  //   //console.log("bla")
+  //   setHexValueEdit(event.target.value);
+  // }
+
+  // function handleContrastTextValueEdit(event) {
+  //   setContrastTextValueEdit(event.target.value);
+  // }
+
+
+
   function handleSubmit(event) {
     event.preventDefault();
     const form = new FormData(event.target);
     const data = Object.fromEntries(form);
+
+    console.log(event.target);
 
     //console.log(data)
     if (mode === "edit") {
@@ -20,7 +55,7 @@ export default function ColorForm({ onAddColor, mode, color, onEditColor }) {
         role: data.role,
         hex: data.hex,
         contrastText: data.contrastText,
-      })
+      });
     } else {
       onAddColor({
         role: data.role,
@@ -29,10 +64,9 @@ export default function ColorForm({ onAddColor, mode, color, onEditColor }) {
       });
     }
     event.target.reset(); // <- this is resetting only the role input :/
+    // setHexValue("#666666");
+    // setContrastTextValue("#000000");
     event.target.elements.role.focus();
-
-    //console.dir(event.target);
-
   }
 
   return (
@@ -47,14 +81,15 @@ export default function ColorForm({ onAddColor, mode, color, onEditColor }) {
       <label htmlFor="hex">Hex</label>
       <ColorInput
         name="hex"
-        defaultValue={mode === "edit" ? color.hex : defaultValues.hex}
+        value={hexValue}
+        
+        onInput={handleHexValue}
       ></ColorInput>
       <label htmlFor="contrastText">Contrast text</label>
       <ColorInput
         name="contrastText"
-        defaultValue={
-          mode === "edit" ? color.contrastText : defaultValues.contrastText
-        }
+        value={contrastTextValue}
+        onInput={handleContrastTextValue}
       ></ColorInput>
       <button type="submit">
         {mode === "edit" ? "Update color" : "Add color"}
