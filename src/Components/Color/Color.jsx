@@ -1,8 +1,9 @@
 import "./Color.css";
 import DeleteButtonGroup from "../DeleteButton/DeleteButton";
 import { useState } from "react";
+import ColorForm from "../ColorForm/ColorForm";
 
-export default function Color({ color, onDelete }) {
+export default function Color({ color, onDelete, onEditColor }) {
 
   const [isEditMode, setIsEditMode] = useState(false);
 
@@ -20,10 +21,13 @@ export default function Color({ color, onDelete }) {
         color: color.contrastText,
       }}
     >
+      {isEditMode ? (
+        <ColorForm mode="edit" color={color} onEditColor={onEditColor}/>
+      ) : null}
       <h3 className="color-card-headline">{color.hex}</h3>
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
-      <DeleteButtonGroup colorId={color.id} onDelete={onDelete} />
+      <DeleteButtonGroup colorId={color.id} onDelete={onDelete} /> {/* pass isEditMode here to manage the conditional rendering of the button group*/}
       <button onClick={toggleEditMode}>Edit</button>
     </div>
   );

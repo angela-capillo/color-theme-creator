@@ -5,9 +5,7 @@ import ColorForm from "./Components/ColorForm/ColorForm";
 import { useState } from "react";
 import { uid } from "uid";
 
-
 function App() {
-
   const [colors, setColors] = useState(initialColors);
 
   function handleAddColor(newColor) {
@@ -19,12 +17,33 @@ function App() {
     setColors(colors.filter((color) => color.id !== colorId));
   }
 
+  function handleEditColor(editedColor) {
+    // console.log(colors);
+    // console.log(editedColor.id)
+    // here I need to loop through the colors array and find the one that matches the id of edited color to overwrite it
+    colors.forEach((color) => {
+      if (color.id === editedColor.id) {
+        color.role = editedColor.role;
+        color.hex = editedColor.hex;
+        color.contrastText = editedColor.contrastText;
+      }
+    });
+    setColors([...colors]);
+  }
+
   return (
     <>
       <h1>Theme Creator</h1>
-      <ColorForm onAddColor={handleAddColor} />
+      <ColorForm onAddColor={handleAddColor} mode="add" />
       {colors.map((color) => {
-        return <Color key={color.id} color={color} onDelete={handleDeleteColor}/>;
+        return (
+          <Color
+            key={color.id}
+            color={color}
+            onDelete={handleDeleteColor}
+            onEditColor={handleEditColor}
+          />
+        );
       })}
     </>
   );
