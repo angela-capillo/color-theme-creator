@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./ColorInput.css";
+import { useEffect } from "react";
 
 
 export default function ColorInput({name, defaultValue}) {

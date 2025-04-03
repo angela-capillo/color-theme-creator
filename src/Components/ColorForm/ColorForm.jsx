@@ -28,8 +28,11 @@ export default function ColorForm({ onAddColor, mode, color, onEditColor }) {
         contrastText: data.contrastText,
       });
     }
-    event.target.reset();
+    event.target.reset(); // <- this is resetting only the role input :/
     event.target.elements.role.focus();
+
+    //console.dir(event.target);
+
   }
 
   return (
