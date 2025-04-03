@@ -17,7 +17,7 @@ export default function DeleteButtonGroup({ colorId, onDelete, onEditMode, onTog
     }
 
     function handleQuitEditMode(){
-      !onEditMode;
+      onTogglingEditMode();
     }
 
     // this return now needs to have another condition for edit mode
