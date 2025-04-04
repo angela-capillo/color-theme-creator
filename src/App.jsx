@@ -38,7 +38,8 @@ function App() {
     <>
       <h1>Theme Creator</h1>
       <ColorForm onAddColor={handleAddColor} mode="add" />
-      {colors.map((color) => {
+      {colors.length === 0 ? (<p>No colors here! Start with adding one!</p>) :
+      (colors.map((color) => {
         return (
           <Color
             key={color.id}
@@ -47,7 +48,8 @@ function App() {
             onEditColor={handleEditColor}
           />
         );
-      })}
+      }))
+    }
     </>
   );
 }

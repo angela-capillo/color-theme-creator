@@ -12,7 +12,6 @@ export default function ContrastChecker({ textColor, bgColor }) {
         body: JSON.stringify({ colors: [textColor, bgColor] }),
       });
     const data = await response.json();
-    console.log(data);
     setContrastResult(data);
   }
   useEffect(() => {
